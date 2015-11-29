@@ -32,6 +32,7 @@ try:
         pi2go.spinRight(speed)
         time.sleep(2)
       else:
+        pi2go.setAllLEDs(LEDoff, LEDoff, LEDoff)
         pi2go.setLED(3, LEDon, LEDon, LEDon)
         pi2go.forward(speed)
     pi2go.stop()
