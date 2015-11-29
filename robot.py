@@ -21,7 +21,7 @@ try:
         pi2go.spinRight(speed)
         time.sleep(1)
       pi2go.stop()
-    while not (pi2go.irLeft() or pi2go.irRight() or pi2go.irCenter()):
+    while not (pi2go.irLeft() or pi2go.irRight() or pi2go.irCentre()):
       if pi2go.getDistance() <= 3.0:
         pi2go.spinRight(speed)
         time.sleep(1)
