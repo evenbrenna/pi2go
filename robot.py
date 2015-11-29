@@ -3,6 +3,8 @@ import pi2go, time
 pi2go.init()
 
 speed = 40
+LEDon = 4095
+LEDoff = 0
 
 try:
   while True:
