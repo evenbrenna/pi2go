@@ -29,10 +29,11 @@ try:
       pi2go.stop()
     while not (pi2go.irLeft() or pi2go.irRight() or pi2go.irCentre()):
       if pi2go.getDistance() <= 3.0:
+        pi2go.setLED(0, LEDon, LEDoff, LEDoff)
         pi2go.spinRight(speed)
         time.sleep(2)
-      else:
         pi2go.setAllLEDs(LEDoff, LEDoff, LEDoff)
+      else:
         pi2go.setLED(3, LEDon, LEDon, LEDon)
         pi2go.forward(speed)
     pi2go.stop()
