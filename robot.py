@@ -14,8 +14,8 @@ try:
       while pi2go.irRight():
         pi2go.spinLeft(speed)
       pi2go.stop()
-    if pi2go.irCenter():
-      while pi2go.irCenter():
+    if pi2go.irCentre():
+      while pi2go.irCentre():
         pi2go.reverse(speed)
         time.sleep(2)
         pi2go.spinRight(speed)
