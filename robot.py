@@ -13,17 +13,24 @@ def ufoLights():
             time.sleep(0.1)
             pi2go.setLED(i, 0, 0, 0)
 
-try:
+def moveAround():
     while True:
+        while not (pi2go.irLeft() or pi2go.irRight() or pi2go.irCentre()):
+            if pi2go.getDistance() <= 2.0:
+                pi2go.spinLeft(speed)
+                time.sleep(1.5)
+            else:
+                pi2go.forward(speed)
+        pi2go.stop()
         if pi2go.irLeft():
             while pi2go.irLeft():
                 pi2go.spinRight(speed)
-                time.sleep(1)
+                time.sleep(0.5)
             pi2go.stop()
         if pi2go.irRight():
             while pi2go.irRight():
                 pi2go.spinLeft(speed)
-                time.sleep(1)
+                time.sleep(0.5)
             pi2go.stop()
         if pi2go.irCentre():
             while pi2go.irCentre():
@@ -32,13 +39,13 @@ try:
                 pi2go.spinLeft(speed)
                 time.sleep(1)
             pi2go.stop()
-        while not (pi2go.irLeft() or pi2go.irRight() or pi2go.irCentre()):
-            if pi2go.getDistance() <= 3.0:
-                pi2go.spinRight(speed)
-                time.sleep(2)
-            else:
-                pi2go.forward(speed)
-        pi2go.stop()
 
+try:
+    thread.start_new_thread(ufoLights, ())
+    thread.start_new_thread(moveAround, ())
+except KeyboardInterrupt:
+    pass
+except:
+    print "Error: unable to start thread"
 finally:
-  pi2go.cleanup()
+    pi2go.cleanup()
